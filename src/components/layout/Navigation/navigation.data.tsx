@@ -1,4 +1,5 @@
 import {
+    BOOKMARKS_ROUTE,
     HOME_ROUTE,
     MOVIES_ROUTE,
     SERIALS_ROUTE,
@@ -31,6 +32,13 @@ export const navLinks: INavLink[] = [
         href: SERIALS_ROUTE,
         src: "/img/serials.svg",
         alt: "Serials",
+        width: 30,
+        height: 30,
+    },
+    {
+        href: BOOKMARKS_ROUTE,
+        src: "/img/bookmark.svg",
+        alt: "Bookmarks",
         width: 30,
         height: 30,
     },

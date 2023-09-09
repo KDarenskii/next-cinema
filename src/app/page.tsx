@@ -9,12 +9,11 @@ import TrendingService from "@/services/Trending.service";
 export const revalidate = 3600;
 
 const HomePage: NextPage = async () => {
-    const trends = await TrendingService.get();
-    // console.log(trends);
+    const trendsData = await TrendingService.get();
 
     return (
         <>
-            <Trending trends={trends} />
+            <Trending trendsData={trendsData} />
         </>
     );
 };

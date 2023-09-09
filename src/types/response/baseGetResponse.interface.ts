@@ -1,6 +1,6 @@
-export interface ITrendingGetResponse {
+export interface BaseGetResponse<T> {
     page: number;
     totalPages: number;
     totalResult: number;
-    results: IMotion[];
+    results: T;
 }

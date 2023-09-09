@@ -7,11 +7,11 @@ export const sliderProps: SwiperProps = {
     slidesPerView: 3,
     spaceBetween: 40,
     speed: 1500,
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    //     pauseOnMouseEnter: true,
-    // },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
     slideToClickedSlide: true,
     coverflowEffect: {
         rotate: 30,

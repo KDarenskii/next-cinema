@@ -2,15 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 
 import TrendingService from "@/services/Trending.service";
 
-import { ITrendingGetResponse } from "@/types/response/trending/getResponse.interface";
+import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
-const useTrending = (initialData: ITrendingGetResponse) => {
-    const { data } = useQuery(["posts"], TrendingService.get, {
+const useTrending = (initialData: BaseGetResponse<IMotion[]>) => {
+    return useQuery(["posts"], TrendingService.get, {
         initialData,
         select: ({ results }) => results,
     });
-
-    return { data };
 };
 
 export default useTrending;

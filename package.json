@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.35.0",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
@@ -20,7 +21,12 @@
     "lodash": "^4.17.21",
     "next": "13.4.19",
     "react": "18.2.0",
+    "react-content-loader": "^6.2.1",
     "react-dom": "18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-redux": "^8.1.2",
+    "react-spinners": "^0.13.8",
+    "redux-persist": "^6.0.0",
     "swiper": "^10.2.0",
     "typescript": "5.2.2"
   },

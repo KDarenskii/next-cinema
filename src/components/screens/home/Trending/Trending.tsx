@@ -6,29 +6,27 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { TrendCard } from "@/components/TrendCard";
-import Typography from "@/components/Typography/Typography";
+import { SectionTitle } from "@/components/SectionTitle";
+import { TrendCard } from "@/components/cards/TrendCard";
 
-import { ITrendingGetResponse } from "@/types/response/trending/getResponse.interface";
+import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
 import { sliderProps } from "./slider.config";
 import styles from "./trending.module.scss";
 import useTrending from "./useTrending";
 
 interface Props {
-    trends: ITrendingGetResponse;
+    trendsData: BaseGetResponse<IMotion[]>;
 }
 
-const Trending: FC<Props> = ({ trends }) => {
-    const { data: trendsList } = useTrending(trends);
+const Trending: FC<Props> = ({ trendsData }) => {
+    const { data: trends } = useTrending(trendsData);
 
     return (
         <section>
-            <Typography as="h1" className="visually-hidden">
-                Trending
-            </Typography>
+            <SectionTitle className="visually-hidden">Trending</SectionTitle>
             <Swiper {...sliderProps}>
-                {trendsList.map((trend) => {
+                {trends.map((trend) => {
                     const date =
                         trend.releaseDate ?? trend.firstAirDate ?? null;
                     const year = date ? date.split("-")[0] : null;
@@ -40,7 +38,6 @@ const Trending: FC<Props> = ({ trends }) => {
                                 rating={trend.voteAverage}
                                 overview={trend.overview}
                                 src={trend.posterPath}
-                                isAdult={trend.adult}
                                 year={year}
                             />
                         </SwiperSlide>

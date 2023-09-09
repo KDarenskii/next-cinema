@@ -2,11 +2,12 @@ import api from "@/api";
 
 import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
-class TrendingService {
-    static get = async () => {
+class SeriesService {
+    static get = async (page: number = 1) => {
         const response = await api.get<BaseGetResponse<IMotion[]>>(
-            "/trending/all/day",
+            "/tv/popular",
             {
+                params: { page },
                 headers: { accept: "application/json" },
             },
         );
@@ -14,4 +15,4 @@ class TrendingService {
     };
 }
 
-export default TrendingService;
+export default SeriesService;

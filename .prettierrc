@@ -12,6 +12,7 @@
         "<THIRD_PARTY_MODULES>",
         "^@/pages/(.*)$",
         "^@/ui/(.*)$",
+        "^@/screens/(.*)$",
         "^@/components/(.*)$",
         "^@/store/(.*)$",
         "^@/hooks/(.*)$",
@@ -21,7 +22,9 @@
         "^@/helpers/(.*)$",
         "^@/types/(.*)$",
         "^@/assets/(.*)$",
-        "^[./]"
+        "^@/constants/(.*)$",
+        "^../(.*)",
+        "^./(.*)"
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
