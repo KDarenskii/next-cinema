@@ -1,0 +1,49 @@
+@import "../../../../assets/styles/vars.scss";
+
+.details {
+    li {
+        @include pcBig {
+            font-size: 24px;
+        }
+        @include pc {
+            font-size: 22px;
+        }
+        @include tablet {
+            font-size: 31px;
+        }
+        @include mobile {
+            font-size: 20px;
+        }
+        @include mobileMiddle {
+            font-size: 17px;
+        }
+        @include mobileSmall {
+            font-size: 21px;
+        }
+    }
+    p {
+        @include pcBig {
+            font-size: 18px;
+        }
+        @include pc {
+            font-size: 15px;
+            height: 95px;
+        }
+        @include tablet {
+            font-size: 18px;
+            height: 116px;
+        }
+        @include mobile {
+            font-size: 16px;
+            height: 96px;
+        }
+        @include mobileMiddle {
+            font-size: 14px;
+            height: 85px;
+        }
+        @include mobileSmall {
+            font-size: 16px;
+            height: 96px;
+        }
+    }
+}
