@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 
-import { FC, PropsWithChildren, ReactNode } from "react";
-
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import { FC, PropsWithChildren } from "react";
 
 import { Container } from "@/components/Container";
 import { Sidebar } from "@/components/layout/Sidebar";
-import AppProvider from "@/components/providers/AppProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
-
-import { persistor, store } from "@/store/store";
+import ReduxProvider from "@/components/providers/ReduxProvider";
 
 import "../assets/styles/index.scss";
 
@@ -23,20 +18,22 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     return (
-        <AppProvider>
-            <html lang="en">
-                <body>
-                    <div className={styles.layout}>
-                        <Container>
-                            <div className={styles.wrapper}>
-                                <Sidebar />
-                                <main>{children}</main>
-                            </div>
-                        </Container>
-                    </div>
-                </body>
-            </html>
-        </AppProvider>
+        <QueryProvider>
+            <ReduxProvider>
+                <html lang="en">
+                    <body>
+                        <div className={styles.layout}>
+                            <Container>
+                                <div className={styles.wrapper}>
+                                    <Sidebar />
+                                    <main>{children}</main>
+                                </div>
+                            </Container>
+                        </div>
+                    </body>
+                </html>
+            </ReduxProvider>
+        </QueryProvider> 
     );
 };
 

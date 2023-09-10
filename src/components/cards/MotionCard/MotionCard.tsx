@@ -1,55 +1,56 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 import cn from "clsx";
 
 import Typography from "@/components/Typography/Typography";
 import { BookmarkButton } from "@/components/ui/BookmarkButton";
 
-import imageApiUrl from "@/utils/imageApiUrl";
-
-import styles from "./movieCard.module.scss";
+import styles from "./motionCard.module.scss";
 
 interface Props {
     src: string;
     rating: number;
     year: string | null;
-    className?: string;
-    mediaType: "movie" | "tv";
+    mediaName: string;
     title: string;
+    isBookmarked: boolean;
+    onBookmarkClick: () => void;
+    className?: string;
 }
 
-const MovieCard: FC<Props> = ({
-    mediaType,
+const MotionCard: FC<Props> = ({
+    onBookmarkClick,
+    isBookmarked,
+    className,
+    mediaName,
     rating,
-    src,
     title,
     year,
-    className,
+    src,
 }) => {
-    const mediaName = mediaType === "movie" ? "Movie" : "TV Series";
+    const handleBookmarkClick = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        onBookmarkClick();
+    };
 
     return (
         <div className={cn(styles.card, className)}>
             <Link href="/">
                 <div className={styles.imageWrapper}>
-                    <Image
-                        src={imageApiUrl(src, "w780")}
-                        alt="Preview"
-                        width={330}
-                        height={208}
-                    />
+                    <Image src={src} alt="Preview" width={330} height={208} />
                     <BookmarkButton
+                        onClick={(event) => handleBookmarkClick(event)}
                         className={styles.bookmark}
-                        isActive={false}
+                        isActive={isBookmarked}
                     />
                 </div>
                 <div className={styles.details}>
                     <Typography as="span">{year}</Typography>
                     <Typography as="span">{mediaName}</Typography>
-                    <Typography as="span">{rating.toFixed(1)}</Typography>
+                    <Typography as="span">{rating}</Typography>
                     <Typography as="h5">{title}</Typography>
                 </div>
             </Link>
@@ -57,4 +58,4 @@ const MovieCard: FC<Props> = ({
     );
 };
 
-export default MovieCard;
+export default MotionCard;

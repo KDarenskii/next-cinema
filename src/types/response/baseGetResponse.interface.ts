@@ -1,6 +1,6 @@
 export interface BaseGetResponse<T> {
     page: number;
     totalPages: number;
-    totalResult: number;
+    totalResults: number;
     results: T;
 }

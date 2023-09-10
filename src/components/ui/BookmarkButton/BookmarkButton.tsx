@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 import cn from "clsx";
 
@@ -6,10 +6,11 @@ import styles from "./bookmarkButton.module.scss";
 
 interface Props {
     isActive: boolean;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     className?: string;
 }
 
-const BookmarkButton: FC<Props> = ({ isActive, className }) => {
+const BookmarkButton: FC<Props> = ({ isActive, className, onClick }) => {
     return (
         <button
             className={cn(
@@ -17,6 +18,7 @@ const BookmarkButton: FC<Props> = ({ isActive, className }) => {
                 isActive && styles["button--active"],
                 className,
             )}
+            onClick={onClick}
         >
             <svg
                 width="800px"

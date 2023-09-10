@@ -1,7 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+import { TMotion } from "@/types/motion.interface";
+
 export type BookmarkState = {
-    list: IMotion[];
+    list: TMotion[];
 };
 
 const initialState: BookmarkState = {
@@ -12,11 +14,11 @@ const bookmarksSlice = createSlice({
     name: "bookmarks",
     initialState,
     reducers: {
-        addBookmark(state, action: PayloadAction<IMotion>) {
+        addBookmark(state, action: PayloadAction<TMotion>) {
             state.list.push(action.payload);
         },
         removeBookmark(state, action: PayloadAction<number>) {
-            state.list.filter(({ id }) => id !== action.payload);
+            state.list = state.list.filter(({ id }) => id !== action.payload);
         },
     },
 });

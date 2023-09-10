@@ -1,8 +1,9 @@
 import { NextPage } from "next";
 
+import { BookmarkedMovies } from "@/components/screens/bookmarks/BookmarkedMovies";
+import { BookmarkedSeries } from "@/components/screens/bookmarks/BookmarkedSeries";
+
 import styles from "./page.module.scss";
-import { BookmarkedMovies } from "@/screens/bookmarks/BookmarkedMovies";
-import { BookmarkedSeries } from "@/screens/bookmarks/BookmarkedSeries";
 
 const BookmarksPage: NextPage = () => {
     return (

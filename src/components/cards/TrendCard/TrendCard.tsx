@@ -12,7 +12,7 @@ interface Props {
     src: string;
     rating: number;
     overview: string;
-    mediaType: "movie" | "tv";
+    mediaName: string;
     year: string | null;
     className?: string;
     detailsClassName?: string;
@@ -21,14 +21,12 @@ interface Props {
 const TrendCard: FC<Props> = ({
     className,
     detailsClassName,
-    mediaType,
+    mediaName,
     overview,
     rating,
     year,
     src,
 }) => {
-    const mediaName = mediaType === "movie" ? "Movie" : "TV Series";
-
     return (
         <div className={cn(styles.card, className)}>
             <Image
