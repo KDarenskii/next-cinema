@@ -4,8 +4,9 @@ import { FC } from "react";
 
 import { MediaList } from "@/components/MediaList";
 import { SectionTitle } from "@/components/SectionTitle";
+import { Alert } from "@/components/ui/Alert";
 
-import { selectBookmarksList } from "@/store/bookmarks/selectors";
+import { selectBookmarkedMovies } from "@/store/bookmarks/selectors";
 
 import useTypedSelector from "@/hooks/useTypedSelector";
 
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const BookmarkedMovies: FC<Props> = ({ className }) => {
-    const { movies } = useTypedSelector(selectBookmarksList);
+    const movies = useTypedSelector(selectBookmarkedMovies);
 
     return (
         <section className={className}>
@@ -24,6 +25,11 @@ const BookmarkedMovies: FC<Props> = ({ className }) => {
                 Bookmarked movies
             </SectionTitle>
             <MediaList mediaList={movies} />
+            {movies.length < 1 && (
+                <Alert variant="info">
+                    You do not have any bookmarked movies yet
+                </Alert>
+            )}
         </section>
     );
 };

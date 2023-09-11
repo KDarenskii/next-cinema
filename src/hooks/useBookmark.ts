@@ -1,7 +1,7 @@
 import { addBookmark, removeBookmark } from "@/store/bookmarks/bookmarksSlice";
-import { selectBookmark } from "@/store/bookmarks/selectors";
+import { selectBookmarkById } from "@/store/bookmarks/selectors";
 
-import { TMotion } from "@/types/motion.interface";
+import { TMotion } from "@/types/motion.type";
 
 import useTypedDispatch from "./useTypedDispatch";
 import useTypedSelector from "./useTypedSelector";
@@ -10,7 +10,7 @@ const useBookmark = (motion: TMotion) => {
     const dispatch = useTypedDispatch();
 
     const bookmark = useTypedSelector((state) =>
-        selectBookmark(state, motion.id),
+        selectBookmarkById(state, motion.id),
     );
 
     const toggleBookmark = () => {

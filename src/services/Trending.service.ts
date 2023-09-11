@@ -1,4 +1,4 @@
-import { IMovie } from "@/types/motion.interface";
+import { IMovie } from "@/types/movie.interface";
 import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
 import api from "@/api";

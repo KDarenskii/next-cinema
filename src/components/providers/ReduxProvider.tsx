@@ -10,9 +10,9 @@ import { persistor, store } from "@/store";
 const ReduxProvider: FC<PropsWithChildren> = ({ children }) => {
     return (
         <Provider store={store}>
-            <PersistGate persistor={persistor} loading={null}>
+            {/* <PersistGate persistor={persistor} loading={null}> */}
                 {children}
-            </PersistGate>
+            {/* </PersistGate> */}
         </Provider>
     );
 };

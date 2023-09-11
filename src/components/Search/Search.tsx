@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { FC } from "react";
 
@@ -17,9 +17,15 @@ interface Props {
 
 const Search: FC<Props> = ({ className }) => {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const defaultSearchValue = searchParams.get("query") || "";
 
-    const handleChange = (value: string) => {
-        router.replace(`/?search=${value}`);
+    const handleSearch = (value: string) => {
+        const newParams = new URLSearchParams(searchParams.toString());
+        newParams.set("query", value);
+        newParams.set("page", "1");
+        router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
     };
 
     return (
@@ -29,7 +35,8 @@ const Search: FC<Props> = ({ className }) => {
                 type="text"
                 name="search"
                 placeholder="Search for movies or TV series"
-                onChange={(event) => handleChange(event.target.value)}
+                onChange={(event) => handleSearch(event.target.value)}
+                defaultValue={defaultSearchValue}
             />
         </div>
     );

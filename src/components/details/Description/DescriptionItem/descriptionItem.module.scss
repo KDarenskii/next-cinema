@@ -1,0 +1,21 @@
+@import "../../../../assets/styles/vars.scss";
+
+.item {
+    display: flex;
+    align-items: baseline;
+    padding: 5px 0;
+}
+
+.name {
+    font-size: 14px;
+    color: rgba($white, 0.6);
+    width: 160px;
+    flex-shrink: 0;
+    @include mobileMiddle {
+        width: 130px;
+    }
+}
+
+.value:not(:last-child)::after {
+    content: ", ";
+}

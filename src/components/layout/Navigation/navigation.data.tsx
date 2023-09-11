@@ -2,7 +2,7 @@ import {
     BOOKMARKS_ROUTE,
     HOME_ROUTE,
     MOVIES_ROUTE,
-    SERIALS_ROUTE,
+    SERIES_ROUTE,
 } from "@/constants/routesPathnames";
 
 interface INavLink {
@@ -29,7 +29,7 @@ export const navLinks: INavLink[] = [
         height: 30,
     },
     {
-        href: SERIALS_ROUTE,
+        href: SERIES_ROUTE,
         src: "/img/serials.svg",
         alt: "Serials",
         width: 30,

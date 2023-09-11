@@ -1,20 +1,32 @@
-import { RootState } from "..";
+import { createSelector } from "@reduxjs/toolkit";
 
-import { IMovie, ISeries } from "@/types/motion.interface";
+import { IMovie } from "@/types/movie.interface";
+import { ISeries } from "@/types/series.interface";
 
-export const selectBookmark = (state: RootState, id: number) => {
+import { RootState } from "../store";
+
+export const selectBookmarkById = (state: RootState, id: number) => {
     return state.bookmarks.list.find((bookmark) => bookmark.id === id) ?? null;
 };
-export const selectBookmarksList = (state: RootState) => {
-    const movies: IMovie[] = [];
-    const series: ISeries[] = [];
-    state.bookmarks.list.forEach((bookmark) => {
-        if ("video" in bookmark) {
-            movies.push(bookmark);
-        } else {
-            series.push(bookmark);
-        }
-    });
 
-    return { movies, series };
+export const selectBookmarks = (state: RootState) => {
+    return state.bookmarks.list;
 };
+
+export const selectBookmarkedMovies = createSelector(
+    selectBookmarks,
+    (bookmarks) => {
+        return bookmarks.filter(
+            (bookmark): bookmark is IMovie => "video" in bookmark,
+        );
+    },
+);
+
+export const selectBookmarkedSeries = createSelector(
+    selectBookmarks,
+    (bookmarks) => {
+        return bookmarks.filter(
+            (bookmark): bookmark is ISeries => !("video" in bookmark),
+        );
+    },
+);

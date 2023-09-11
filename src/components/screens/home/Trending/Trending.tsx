@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { TrendCard } from "@/components/cards/TrendCard";
 
-import { IMovie } from "@/types/motion.interface";
+import { IMovie } from "@/types/motionBase.interface";
 import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
 import { sliderProps } from "./slider.config";
@@ -38,6 +38,7 @@ const Trending: FC<Props> = ({ trendsData }) => {
                                 overview={trend.overview}
                                 src={trend.posterPath}
                                 year={year}
+                                id={trend.id}
                             />
                         </SwiperSlide>
                     );

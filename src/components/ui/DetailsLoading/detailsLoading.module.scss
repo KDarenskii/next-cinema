@@ -1,0 +1,155 @@
+@import "../../../assets/styles/vars.scss";
+
+.body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    padding: 0 130px;
+    @include pcBig {
+        padding: 0;
+    }
+    @include tablet {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+.desktopPoster {
+    @media (max-width: $tablet) {
+        display: none !important;
+    }
+}
+
+.header {
+    margin-bottom: 20px;
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.title {
+    width: 500px !important;
+    height: 42px;
+    margin-bottom: 15px;
+    @include tablet {
+        width: 150px !important;
+    }
+}
+
+.tagline {
+    width: 350px !important;
+    height: 25px;
+    @include tablet {
+        width: 80px !important;
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 20px;
+    @include tablet {
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto 30px;
+    }
+    @include mobile {
+        flex-wrap: wrap;
+    }
+    @include mobileMiddle {
+        flex-direction: column;
+        align-items: center;
+        max-width: 500px;
+        margin: 0 auto 15px;
+    }
+}
+
+.mobilePoster {
+    display: none;
+    @include tablet {
+        display: block;
+        margin: 0 auto 20px;
+    }
+    span {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.descriptionWrapper {
+    width: 100%;
+}
+
+.descriptionTitle {
+    margin-bottom: 15px;
+}
+
+.descriptionItem {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 8px 0;
+    @include pcBig {
+        width: 100%;
+    }
+    span:last-child {
+        width: 100%;
+        & .descriptionValue {
+            width: 100%;
+            span {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.participantsWrapper {
+    @include mobile {
+        width: 100%;
+    }
+}
+
+.participantsTitle {
+    margin-bottom: 15px;
+    @include mobile {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.participantsList {
+    @include mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.participantItem {
+    margin-bottom: 5px;
+    @include mobile {
+        width: 100%;
+        span {
+            display: block;
+            width: 100% !important;
+        }
+    }
+}
+
+.storyTitle {
+    margin-bottom: 15px;
+    @include tablet {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.story {
+    @include tablet {
+        display: block;
+        margin: 0 auto;
+    }
+}

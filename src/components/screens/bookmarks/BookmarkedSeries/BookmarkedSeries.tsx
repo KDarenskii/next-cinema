@@ -4,15 +4,16 @@ import { FC } from "react";
 
 import { MediaList } from "@/components/MediaList";
 import { SectionTitle } from "@/components/SectionTitle";
+import { Alert } from "@/components/ui/Alert";
 
-import { selectBookmarksList } from "@/store/bookmarks/selectors";
+import { selectBookmarkedSeries } from "@/store/bookmarks/selectors";
 
 import useTypedSelector from "@/hooks/useTypedSelector";
 
 import styles from "./bookmarkedSeries.module.scss";
 
 const BookmarkedSeries: FC = () => {
-    const { series } = useTypedSelector(selectBookmarksList);
+    const series = useTypedSelector(selectBookmarkedSeries);
 
     return (
         <section>
@@ -20,6 +21,11 @@ const BookmarkedSeries: FC = () => {
                 Bookmarked TV series
             </SectionTitle>
             <MediaList mediaList={series} />
+            {series.length < 1 && (
+                <Alert variant="info">
+                    You do not have any bookmarked TV series yet
+                </Alert>
+            )}
         </section>
     );
 };

@@ -1,0 +1,29 @@
+@import "../../../assets/styles/vars.scss";
+
+.participants {
+    h6 {
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        @include mobileMiddle {
+            flex-direction: row;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+    }
+    li {
+        color: $lightGrey;
+        font-size: 14px;
+        @include mobileMiddle {
+            &:not(:last-child) {
+                &::after {
+                    content: ", ";
+                }
+            }
+        }
+    }
+}

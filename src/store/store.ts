@@ -13,36 +13,36 @@ import storage from "redux-persist/lib/storage";
 
 import bookmarksReducer from "./bookmarks/bookmarksSlice";
 
-const persistConfig = {
-    key: "next-shop",
-    storage,
-    whitelist: ["bookmarks"],
-};
+// const persistConfig = {
+//     key: "next-shop",
+//     storage,
+//     whitelist: ["bookmarks"],
+// };
 
 const rootReducer = combineReducers({
     bookmarks: bookmarksReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleWare) =>
-        getDefaultMiddleWare({
-            serializableCheck: {
-                ignoredActions: [
-                    FLUSH,
-                    REGISTER,
-                    REHYDRATE,
-                    PAUSE,
-                    PERSIST,
-                    PURGE,
-                ],
-            },
-        }),
+    reducer: rootReducer,
+    // middleware: (getDefaultMiddleWare) =>
+    //     getDefaultMiddleWare({
+    //         serializableCheck: {
+    //             ignoredActions: [
+    //                 FLUSH,
+    //                 REGISTER,
+    //                 REHYDRATE,
+    //                 PAUSE,
+    //                 PERSIST,
+    //                 PURGE,
+    //             ],
+    //         },
+    //     }),
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

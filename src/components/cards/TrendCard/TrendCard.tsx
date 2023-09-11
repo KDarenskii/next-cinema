@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { FC } from "react";
 
@@ -6,15 +7,18 @@ import cn from "clsx";
 
 import imageApiUrl from "@/utils/imageApiUrl";
 
+import { MOVIES_ROUTE } from "@/constants/routesPathnames";
+
 import styles from "./trendCard.module.scss";
 
 interface Props {
+    id: number;
     src: string;
     rating: number;
     overview: string;
     mediaName: string;
-    year: string | null;
     className?: string;
+    year: string | null;
     detailsClassName?: string;
 }
 
@@ -26,9 +30,13 @@ const TrendCard: FC<Props> = ({
     rating,
     year,
     src,
+    id,
 }) => {
     return (
-        <div className={cn(styles.card, className)}>
+        <Link
+            className={cn(styles.card, className)}
+            href={`${MOVIES_ROUTE}/${id}`}
+        >
             <Image
                 src={imageApiUrl(src, "w500")}
                 alt="Poster"
@@ -45,7 +53,7 @@ const TrendCard: FC<Props> = ({
                     <p>{overview}</p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

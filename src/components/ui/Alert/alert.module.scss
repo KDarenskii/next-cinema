@@ -5,7 +5,7 @@
     font-size: 20px;
     border-radius: 10px;
     text-align: center;
-    &--info {
+    &--fail {
         color: #721c24;
         background-color: #f8d7da;
         border-color: #f5c6cb;
@@ -15,7 +15,7 @@
         background-color: #d4edda;
         border-color: #c3e6cb;
     }
-    &--fail {
+    &--info {
         background-color: #032830;
         color: #3bb3e3;
         border-color: #054c5a;

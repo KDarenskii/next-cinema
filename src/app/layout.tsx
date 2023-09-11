@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { FC, PropsWithChildren } from "react";
 
-import { Container } from "@/components/Container";
+import { Container } from "@/components/layout/Container";
 import { Sidebar } from "@/components/layout/Sidebar";
 import QueryProvider from "@/components/providers/QueryProvider";
 import ReduxProvider from "@/components/providers/ReduxProvider";
@@ -33,7 +33,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
                     </body>
                 </html>
             </ReduxProvider>
-        </QueryProvider> 
+        </QueryProvider>
     );
 };
 

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { TMotion } from "@/types/motion.interface";
+import { TMotion } from "@/types/motionBase.interface";
 
 export type BookmarkState = {
     list: TMotion[];

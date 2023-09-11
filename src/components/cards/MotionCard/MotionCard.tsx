@@ -16,6 +16,7 @@ interface Props {
     year: string | null;
     mediaName: string;
     title: string;
+    href: string;
     isBookmarked: boolean;
     onBookmarkClick: () => void;
     className?: string;
@@ -28,6 +29,7 @@ const MotionCard: FC<Props> = ({
     mediaName,
     rating,
     title,
+    href,
     year,
     src,
 }) => {
@@ -38,7 +40,7 @@ const MotionCard: FC<Props> = ({
 
     return (
         <div className={cn(styles.card, className)}>
-            <Link href="/">
+            <Link href={href}>
                 <div className={styles.imageWrapper}>
                     <Image src={src} alt="Preview" width={330} height={208} />
                     <BookmarkButton
