@@ -1,0 +1,23 @@
+.select {
+    height: 38px;
+}
+
+.control {
+    border-color: #646464 !important;
+    background-color: transparent !important;
+}
+
+.value {
+    color: #fff !important;
+}
+
+.menu {
+    background-color: #2a3f52 !important;
+}
+
+.option {
+    cursor: pointer !important;
+    &:hover {
+        background-color: lighten(#2a3f52, 10%);
+    }
+}

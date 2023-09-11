@@ -15,14 +15,19 @@ import styles from "./mediaList.module.scss";
 
 interface Props {
     mediaList: IMovie[] | ISeries[];
+    isFetching?: boolean;
 }
 
-const MediaList: FC<Props> = ({ mediaList }) => {
+const MediaList: FC<Props> = ({ mediaList, isFetching }) => {
     return (
         <ul className={styles.list}>
             {mediaList.map((media) =>
                 "video" in media ? (
-                    <MovieCard movie={media} key={media.id} />
+                    <MovieCard
+                        movie={media}
+                        key={media.id}
+                        isFetching={isFetching}
+                    />
                 ) : (
                     <SerialsCard series={media} key={media.id} />
                 ),
@@ -33,7 +38,13 @@ const MediaList: FC<Props> = ({ mediaList }) => {
 
 export default MediaList;
 
-function MovieCard({ movie }: { movie: IMovie }) {
+function MovieCard({
+    movie,
+    isFetching,
+}: {
+    movie: IMovie;
+    isFetching?: boolean;
+}) {
     const { voteAverage, backdropPath, title, releaseDate, id } = movie;
 
     const { toggleBookmark, isBookmarked } = useBookmark(movie);
@@ -47,6 +58,7 @@ function MovieCard({ movie }: { movie: IMovie }) {
             onBookmarkClick={toggleBookmark}
             href={`${MOVIES_ROUTE}/${id}`}
             isBookmarked={isBookmarked}
+            isFetching={isFetching}
             mediaName="Movie"
             title={title}
             year={year}
@@ -54,7 +66,13 @@ function MovieCard({ movie }: { movie: IMovie }) {
     );
 }
 
-function SerialsCard({ series }: { series: ISeries }) {
+function SerialsCard({
+    series,
+    isFetching,
+}: {
+    series: ISeries;
+    isFetching?: boolean;
+}) {
     const { voteAverage, backdropPath, name, firstAirDate, id } = series;
 
     const year = firstAirDate?.split("-")[0] ?? "";
@@ -67,6 +85,7 @@ function SerialsCard({ series }: { series: ISeries }) {
             src={imageApiUrl(backdropPath, "w780")}
             onBookmarkClick={toggleBookmark}
             isBookmarked={isBookmarked}
+            isFetching={isFetching}
             href={`${SERIES_ROUTE}/${id}`}
             mediaName="TV Series"
             title={name}

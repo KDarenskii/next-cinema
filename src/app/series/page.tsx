@@ -2,12 +2,12 @@ import { Metadata, NextPage } from "next";
 
 import React from "react";
 
-import { Search } from "@/components/Search";
 import { Series } from "@/components/screens/series/Series";
+import { Search } from "@/components/ui/Search";
 
 import SeriesService from "@/services/Series.service";
 
-import styles from "./layout.module.scss";
+import styles from "./page.module.scss";
 
 export const revalidate = 3600;
 

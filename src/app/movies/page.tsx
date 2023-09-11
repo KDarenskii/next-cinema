@@ -2,8 +2,8 @@ import { Metadata, NextPage } from "next";
 
 import React from "react";
 
-import { Search } from "@/components/Search";
 import { Movies } from "@/components/screens/movies/Movies";
+import { Search } from "@/components/ui/Search";
 
 import MoviesService from "@/services/Movies.service";
 
@@ -18,26 +18,33 @@ export const metadata: Metadata = {
 
 interface Props {
     searchParams: {
-        page?: string;
         query?: string;
+        with_genres?: string;
+        year?: string;
+        sort_by?: string;
     };
 }
 
 const MoviesPage: NextPage<Props> = async ({
-    searchParams: { page, query },
+    searchParams: { query, with_genres, year, sort_by },
 }) => {
-    const currPage = page ? Number(page) : 1;
     const currQuery = query ?? "";
+    const currGenre = with_genres ?? null;
+    const currYear = year ?? null;
+    const currSort = sort_by ?? null;
 
-    console.log(currPage);
-    console.log(currQuery);
-
-    const moviesData = await MoviesService.get(currPage, currQuery);
+    const moviesData = await MoviesService.get({
+        query: currQuery,
+        genre: currGenre,
+        year: currYear,
+        sort: currSort,
+    });
+    const genresData = await MoviesService.getGenres();
 
     return (
         <>
             <Search className={styles.search} />
-            <Movies moviesData={moviesData} />
+            <Movies moviesData={moviesData} genresData={genresData} />
         </>
     );
 };

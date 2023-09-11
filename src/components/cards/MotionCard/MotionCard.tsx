@@ -20,11 +20,13 @@ interface Props {
     isBookmarked: boolean;
     onBookmarkClick: () => void;
     className?: string;
+    isFetching?: boolean;
 }
 
 const MotionCard: FC<Props> = ({
     onBookmarkClick,
     isBookmarked,
+    isFetching,
     className,
     mediaName,
     rating,
@@ -39,7 +41,13 @@ const MotionCard: FC<Props> = ({
     };
 
     return (
-        <div className={cn(styles.card, className)}>
+        <div
+            className={cn(
+                styles.card,
+                isFetching && styles.disabled,
+                className,
+            )}
+        >
             <Link href={href}>
                 <div className={styles.imageWrapper}>
                     <Image src={src} alt="Preview" width={330} height={208} />
