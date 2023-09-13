@@ -1,5 +1,9 @@
 @import "../../../../assets/styles/vars.scss";
 
+.card {
+    max-width: 420px;
+}
+
 .details {
     li {
         @include pcBig {

@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { TrendCard } from "@/components/cards/TrendCard";
 
-import { IMovie } from "@/types/motionBase.interface";
+import { IMovie } from "@/types/movie.interface";
 import { BaseGetResponse } from "@/types/response/baseGetResponse.interface";
 
 import { sliderProps } from "./slider.config";
@@ -30,8 +30,9 @@ const Trending: FC<Props> = ({ trendsData }) => {
                 {trends.map((trend) => {
                     const year = trend.releaseDate.split("-")[0];
                     return (
-                        <SwiperSlide key={trend.id}>
+                        <SwiperSlide key={trend.id} className={styles.card}>
                             <TrendCard
+                                className={styles.card}
                                 detailsClassName={styles.details}
                                 mediaName="Movie"
                                 rating={trend.voteAverage}
